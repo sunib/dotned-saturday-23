@@ -39,14 +39,6 @@
 	<script src="plugin/search/search.js"></script>
 	<script src="plugin/markdown/markdown.js"></script>
 	<script src="plugin/highlight/highlight.js"></script>
-	<script src="plugin/seminar/plugin.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.6.1/socket.io.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.2.0/chart.min.js"></script>
-	<script src="plugin/chart/plugin.js"></script>
-	<script src="plugin/poll/plugin.js"></script>
-	<script src="plugin/questions/plugin.js"></script>
-	<link rel="stylesheet" href="plugin/poll/style.css">
-	<link rel="stylesheet" href="plugin/questions/style.css">
 
 	<script>
 
@@ -59,23 +51,13 @@
 			transition: 'convex', // none/fade/slide/convex/concave/zoom
 			transitionSpeed: 'default', // default/fast/slow
 			hash: true,
-			seminar: {
-				server: 'localhost:4433', // change server as necessary
-				room: 'The cool stuff', // put your room name here
-				hash: '$2a$05$z6F8iZEGk/hotzpDroOYe.kZMvGgZlcyIT5G97s/GNg/YpQ.XNa5K', // a hash is required for every seminar room and can be generated on the URL of the socket.io server
-				autoJoin: true // set to true to auto,matically join the seminar room
-			},
 			// Learn about plugins: https://revealjs.com/plugins/
 			plugins: [
 				RevealZoom,
 				RevealNotes,
 				RevealSearch,
 				RevealMarkdown,
-				RevealHighlight,
-				RevealChart,
-				RevealSeminar,
-				RevealPoll,
-				RevealQnA]
+				RevealHighlight]
 		});
 
 	</script>

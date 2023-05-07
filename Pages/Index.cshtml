@@ -149,14 +149,33 @@
 
 <section data-markdown>
 	<script type="text/template">
+	# This is a title
+
+	How can we write a nice text in here?
+
+	```cs
+		public IndexModel(ILogger<IndexModel> logger)
+		{
+			_logger = logger;
+		}
+
+		public void OnGet()
+		{
+			blaat();
+		}
+	```
+	</script>
+</section>
+
+<section data-markdown>
+	<script type="text/template">
 		## Markdown Support
 
 		Write content using inline or external Markdown.
 		Instructions and more info available in the [docs](https://revealjs.com/markdown/).
 
 		```html []
-		<section data-markdown>
-			
+		<section data-markdown>			
 		  ## Markdown Support
 
 		  Write content using inline or external Markdown.
