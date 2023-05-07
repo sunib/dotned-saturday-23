@@ -1,51 +1,84 @@
-﻿<!DOCTYPE html>
+﻿<!doctype html>
 <html lang="en">
+
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - slides</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/slides.styles.css" asp-append-version="true" />
+	<meta charset="utf-8">
+
+	<title>reveal.js – The HTML Presentation Framework</title>
+
+	<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+	<meta name="author" content="Hakim El Hattab">
+
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="dist/reset.css">
+	<link rel="stylesheet" href="dist/reveal.css">
+	<link rel="stylesheet" href="dist/theme/black.css" id="theme">
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="plugin/highlight/monokai.css">
 </head>
+
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">slides</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2023 - slides - <a asp-area="" asp-page="/Privacy">Privacy</a>
-        </div>
-    </footer>
+	<div class="reveal">
 
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+		<!-- Any section element inside of this container is displayed as a slide -->
+		<div class="slides">
+			@RenderBody()
+		</div>
 
-    @await RenderSectionAsync("Scripts", required: false)
+	</div>
+
+	<script src="dist/reveal.js"></script>
+	<script src="plugin/zoom/zoom.js"></script>
+	<script src="plugin/notes/notes.js"></script>
+	<script src="plugin/search/search.js"></script>
+	<script src="plugin/markdown/markdown.js"></script>
+	<script src="plugin/highlight/highlight.js"></script>
+	<script src="plugin/seminar/plugin.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.6.1/socket.io.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.2.0/chart.min.js"></script>
+	<script src="plugin/chart/plugin.js"></script>
+	<script src="plugin/poll/plugin.js"></script>
+	<script src="plugin/questions/plugin.js"></script>
+	<link rel="stylesheet" href="plugin/poll/style.css">
+	<link rel="stylesheet" href="plugin/questions/style.css">
+
+	<script>
+
+		// Also available as an ES module, see:
+		// https://revealjs.com/initialization/
+		Reveal.initialize({
+			controls: true,
+			progress: true,
+			center: true,
+			transition: 'convex', // none/fade/slide/convex/concave/zoom
+			transitionSpeed: 'default', // default/fast/slow
+			hash: true,
+			seminar: {
+				server: 'localhost:4433', // change server as necessary
+				room: 'The cool stuff', // put your room name here
+				hash: '$2a$05$z6F8iZEGk/hotzpDroOYe.kZMvGgZlcyIT5G97s/GNg/YpQ.XNa5K', // a hash is required for every seminar room and can be generated on the URL of the socket.io server
+				autoJoin: true // set to true to auto,matically join the seminar room
+			},
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [
+				RevealZoom,
+				RevealNotes,
+				RevealSearch,
+				RevealMarkdown,
+				RevealHighlight,
+				RevealChart,
+				RevealSeminar,
+				RevealPoll,
+				RevealQnA]
+		});
+
+	</script>
+
 </body>
 </html>
