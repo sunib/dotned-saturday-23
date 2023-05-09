@@ -6,9 +6,9 @@ EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
-COPY ["slides.csproj", "."]
+COPY ["src/slides.csproj", "."]
 RUN dotnet restore "./slides.csproj"
-COPY . .
+COPY src .
 WORKDIR "/src/."
 RUN dotnet build "slides.csproj" -c Release -o /app/build
 
