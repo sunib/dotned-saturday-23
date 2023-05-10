@@ -1,0 +1,91 @@
+---
+# Source: dotned-saturday-23/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: release-name-dotned-saturday-23
+  labels:
+    helm.sh/chart: dotned-saturday-23-0.0.1_replaced.by.yq.in.pipeline
+    app.kubernetes.io/name: dotned-saturday-23
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/version: "1.16.0"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  type: ClusterIP
+  ports:
+    - port: 80
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    app.kubernetes.io/name: dotned-saturday-23
+    app.kubernetes.io/instance: release-name
+---
+# Source: dotned-saturday-23/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: release-name-dotned-saturday-23
+  labels:
+    helm.sh/chart: dotned-saturday-23-0.0.1_replaced.by.yq.in.pipeline
+    app.kubernetes.io/name: dotned-saturday-23
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/version: "1.16.0"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: dotned-saturday-23
+      app.kubernetes.io/instance: release-name
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: dotned-saturday-23
+        app.kubernetes.io/instance: release-name
+    spec:
+      containers:
+        - name: dotned-saturday-23
+          image: "viyacr.azurecr.io/dotned-saturday-23:0.0.1+replaced.by.yq.in.pipeline"
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+---
+# Source: dotned-saturday-23/templates/ingress.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: zerossl-prod
+    kubernetes.io/tls-acme: "true"
+  name: ingress-default
+spec:
+  ingressClassName: nginx
+  tls:
+  - hosts:
+    - dotned.uranus.viya.me
+    secretName: default-cert-tls
+  rules:
+  - host: dotned.uranus.viya.me
+    http:  
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: stitch
+            port:
+              number: 80
+---
+# Source: dotned-saturday-23/templates/ingress-pr.yaml
+# This ingress will only run for PR environments
