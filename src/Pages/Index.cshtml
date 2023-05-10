@@ -4,98 +4,49 @@
     ViewData["Title"] = "Slides dotNed 2023";
 }
 
-<partial name="slide1" />
+<section>   
+	<h3>Breng je pull requests tot leven met</h3>
+	
+	<div class="r-hstack justify-center">
+		<div>
+			<h3>K8s</h3>
+			<img src="/img/k8s-logo.svg" style="height: 200px; margin: 4rem auto 4rem auto; background: transparent;" class="demo-logo">
+		</div>
+
+		<div>
+			<h3>GitOps</h3>
+			<img src="/img/git-logo.svg" style="height: 200px; margin: 4rem auto 4rem auto; background: transparent;" class="demo-logo">
+		</div>
+
+		<div>
+			<h3>ArgoCD</h3>
+			<img src="/img/argo-icon-color.svg" style="height: 200px; margin: 4rem auto 4rem auto; background: transparent;" class="demo-logo">
+		</div>
+	</div>
+
+	<p>
+		<small>dotNed Saturday, 13 mei 2023, Simon Koudijs</small>
+	</p>
+
+</section>
 
 <section>
 	<h2>Inhoud</h2>
 	<ol>
 		<li>Introductie</li>
-		<li>Slides</li>
-		<li>GitOps of Kubernetes</li>
+		<li>GitOps</li>
+		<li>Deployments</li>
 		<li>Ephemeral environments</li>
-		<li>ArgoCD</li>
 	</ol>
 </section>
 
-<section data-background-gradient="linear-gradient(to bottom, #95ecb0, #f3f98a)"> <!-- data-background-color="rgb(70, 70, 255) -->
-	<section>
-		<h2>Simon🍦</h2>
-		<p>36 jaar en woon in Huis ter Heide</p>
-		<p>Getrouwd en 2 zoons van 6 en 8</p>
-	</section>
+<partial name="1-intro" />
 
-	<section>
-		<img height="200" data-src="/img/shipitsmarter_logo_rgb.svg">
-		<p>Transport management systeem</p>
-		<p>Circa 25 man</p>
-		<p>Eigen datacenter in Adam en Azure</p>
-		<p>Classic ASP, C#, SQL Server, K8S (AKS), Golang, MongoDB</p>
-		<p>Nieuwe productontwikkeling (viya.me)</p>
-	</section>
-	<section data-background-iframe="https://shipitsmarter.com" data-background-interactive>
-	</section>
-	<section data-background-iframe="https://viya.me" data-background-interactive>
-	</section>
-</section>
+<partial name="2-GitOps" />
 
-<section>
-	<section>
-		<h2>GitOps</h2>
-		<p>
-			<ul>
-				<li>Principes, geen wet</li>
-				<li>Werkt uitstekend samen met DevOps</li>
-				<li>Git beschrijft de waarheid</li>
-				<li>Je kiest je eigen tools</li>
-			</ul>
-		</p>
-		<p>
-		</p>
-	</section>
-	
-	<section>
-		<h2>De 4 GitOps principes</h2>
-		<p>
-			<ol>
-				<li>Declarative (not imperative)</li>
-				<li>Versioned and Immutable</li>
-				<li>Pulled Automatically (geen push!)</li>
-				<li>Continuously Reconciled</li>
-			</ol>
-		</p>
-	</section>
+<partial name="3-deployments" />
 
-	<section data-background-iframe="https://opengitops.dev/" data-background-interactive>
-	</section>
-</section>
-
-<!-- To be placed -->
-<!-- You want more deployments, that's where you learn and that's how you avoid fear or pain in doing them -->
-<!-- Wie is bekend met de SRE roll? Site Reliability Engineer -->
-<!-- https://cloud.google.com/blog/products/devops-sre/using-the-four-keys-to-measure-your-devops-performance  -->
-<!-- data-background-gradient="radial-gradient(#11d3f3, #adfda2)" -->
-<!-- https://www.qovery.com/blog/ephemeral-environments-explained-benefits-and-how-to-get-started -->
-
-<section>
-	<h2>GitOps</h2>
-	<img class="r-stretch" src="/img/gitops-flow.drawio.png">
-</section>
-
-<section>
-	<h2>GitOps</h2>
-	<img class="r-stretch" src="/img/gitops-flow-2.drawio.png">
-</section>
-
-
-<section>
-	<h2>Staging git flow</h2>
-	<img class="r-stretch" src="/img/git-staging.drawio.png">
-</section>
-
-<section>
-	<h2>Simple git flow</h2>
-	<img height="400" data-src="/img/git-pr.drawio.png" alt="Down arrow">
-</section>
+<partial name="4-ephemeral" />
 
 <!-- Example of nested vertical slides -->
 <section>
