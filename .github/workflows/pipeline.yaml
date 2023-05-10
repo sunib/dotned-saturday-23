@@ -40,6 +40,13 @@ jobs:
       with:
         fetch-depth: 0 # Needed for gitversion
 
+    - name: set custom sub for oidc token
+      env:
+        GH_TOKEN: ${{ github.token }}
+      run: |
+        echo '{"use_default": false, "include_claim_keys":["repository_owner","context"]}' | \
+          gh api -X PUT /repos/{owner}/{repo}/actions/oidc/customization/sub --silent --input -
+
     - name: 'Azure login (federated)'
       uses: azure/login@v1
       with:
